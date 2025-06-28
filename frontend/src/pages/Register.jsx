@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -7,6 +8,14 @@ export default function Register() {
     email: '',
     password: '',
   });
+
+  const handleChange = (e) => {
+  setForm({
+    ...form,
+    [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <div>
       <h1>Register</h1>
@@ -30,7 +39,7 @@ export default function Register() {
         <input
           type="password"
           name="password"
-          placeholder="Username"
+          placeholder="Password"
           value={form.password}
           onChange={handleChange}
           required
