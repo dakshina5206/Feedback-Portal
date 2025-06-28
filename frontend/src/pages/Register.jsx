@@ -16,18 +16,23 @@ export default function Register() {
     });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    try {
+      const response = await axios.post('http://localhost:5175/signup', form);
+      console.log(response.data);
+      navigate('/login');
+    } catch (err) {
+      console.error(err);
+      setError(err.response?.data?.message || 'Registration failed');
+    }
+  };
+
   return (
     <div>
       <h1>Register</h1>
-      <form>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
