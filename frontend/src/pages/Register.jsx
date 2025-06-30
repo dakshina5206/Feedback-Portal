@@ -23,8 +23,10 @@ export default function Register() {
     setError('');
     try {
       const response = await axios.post('http://localhost:3001/auth/signup', form);
-      console.log(response.data);
-      navigate('/login');
+      
+      localStorage.setItem('token', response.data.token)
+
+      navigate('/submit');
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.message || 'Registration failed');
