@@ -11,11 +11,29 @@ export default function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  
+  const handleChange = (e) => {
+  setForm({
+    ...form,
+    [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    try {
+      const response = await axios.post('http://localhost:3001/auth/login', form);
+      console.log(response.data);
+      navigate('/submit');
+    } catch (err) {
+      console.error(err);
+      setError(err.response?.data?.message || 'Login failed');
+    }
+  };
 
   return (
     <div>
-      <h1>Register</h1>
+      <h1>Login</h1>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <form onSubmit={handleSubmit}>
           <input
