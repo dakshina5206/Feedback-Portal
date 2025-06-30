@@ -22,7 +22,7 @@ export default function Register() {
     e.preventDefault();
     setError('');
     try {
-      const response = await axios.post('http://localhost:3001/signup', form);
+      const response = await axios.post('http://localhost:3001/auth/signup', form);
       console.log(response.data);
       navigate('/login');
     } catch (err) {
