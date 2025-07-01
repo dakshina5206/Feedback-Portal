@@ -23,7 +23,6 @@ export default function Login() {
     setError('');
     try {
       const response = await axios.post('http://localhost:3001/auth/login', form);
-      console.log(response.data);
       navigate('/submit');
     } catch (err) {
       console.error(err);

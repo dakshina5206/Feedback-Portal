@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import SubmitFeedback from './pages/SubmitFeedback';
@@ -15,7 +15,15 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<div>Landing Page</div>} />
+        <Route path="/" element={
+          <div>
+            <h1>Welcome to the feedback terminal</h1>
+            <Link to="/login">
+              <button>
+                Login
+              </button>
+            </Link>
+          </div>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route
