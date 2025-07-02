@@ -11,9 +11,17 @@ function PrivateRoute({ children }) {
   return token ? children : <Navigate to="/login" />;
 }
 
+const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/login';
+  };
+
 function App() {
   return (
     <Router>
+      {localStorage.getItem('token') && (
+        <button onClick={handleLogout}>Logout</button>
+      )}
       <Routes>
         <Route path="/" element={
           <div>
@@ -21,6 +29,11 @@ function App() {
             <Link to="/login">
               <button>
                 Login
+              </button>
+            </Link>
+            <Link to="/register">
+              <button>
+                Register
               </button>
             </Link>
           </div>} />

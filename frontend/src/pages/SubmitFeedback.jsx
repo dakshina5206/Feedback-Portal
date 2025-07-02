@@ -49,6 +49,9 @@ export default function SubmitFeedback() {
         <br />
         <button type="submit">Submit</button>
       </form>
+      <a href="/my-feedback">
+        <button>View Feedback</button>
+      </a>
     </div>
   );
 }

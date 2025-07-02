@@ -23,6 +23,7 @@ export default function Login() {
     setError('');
     try {
       const response = await axios.post('http://localhost:3001/auth/login', form);
+      localStorage.setItem('token', response.data.token)
       navigate('/submit');
     } catch (err) {
       console.error(err);
@@ -33,26 +34,26 @@ export default function Login() {
   return (
     <div>
       <h1>Login</h1>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
-          <button type="submit">Login</button>
-        </form>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 } 

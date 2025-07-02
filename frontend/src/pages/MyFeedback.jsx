@@ -34,6 +34,9 @@ export default function MyFeedback() {
           <li key={fb.id}>{fb.message}</li>
         ))}
       </ul>
+      <a href="/submit">
+        <button>Write Feedback</button>
+      </a>
     </div>
   );
 }
